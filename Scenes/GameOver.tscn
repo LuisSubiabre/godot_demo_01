@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5c8loc6rh3u6"]
+
+[ext_resource type="Script" uid="uid://0ptou7b5er75" path="res://Scenes/game_over.gd" id="1_k52d1"]
+[ext_resource type="FontFile" uid="uid://bgha6svn2gptw" path="res://Assets/Fonts/kenvector_future.ttf" id="1_m5628"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k52d1")
+next_scene_path = "res://Scenes/level_1.tscn"
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 0.596078, 1, 1)
+theme_override_fonts/normal_font = ExtResource("1_m5628")
+bbcode_enabled = true
+text = "[center][wave]GAME OVER[/wave][/center]"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.996
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

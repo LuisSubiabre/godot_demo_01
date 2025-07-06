@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://bk1kp6n6u3foe"]
+[gd_scene load_steps=15 format=4 uid="uid://bk1kp6n6u3foe"]
 
 [ext_resource type="PackedScene" uid="uid://doc7v7s7ra538" path="res://Scenes/player.tscn" id="1_vk57k"]
 [ext_resource type="Texture2D" uid="uid://rcxr50mhe722" path="res://Assets/Background/Blue.png" id="1_xfk5q"]
 [ext_resource type="Texture2D" uid="uid://b8i85mrnm3q5f" path="res://Assets/Terrain (16x16).png" id="2_8ffim"]
 [ext_resource type="Texture2D" uid="uid://cd76kofl7v1fb" path="res://Assets/Items/Checkpoints/End/End (Idle).png" id="4_7p6j4"]
 [ext_resource type="Script" uid="uid://ixnowr32bxvb" path="res://Scenes/toLevel.gd" id="5_6444e"]
+[ext_resource type="Script" uid="uid://bd7qpn4aedjmq" path="res://Scenes/area_game_over.gd" id="6_evi0p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7p6j4"]
 texture = ExtResource("1_xfk5q")
@@ -186,6 +187,9 @@ size = Vector2(79.5, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evi0p"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsmp6"]
+size = Vector2(737, 35)
+
 [node name="Level1" type="Node2D"]
 
 [node name="TileMapLayerBack" type="TileMapLayer" parent="."]
@@ -222,4 +226,13 @@ next_scene_path = "res://Scenes/level_2.tscn"
 position = Vector2(396, 186)
 shape = SubResource("RectangleShape2D_evi0p")
 
+[node name="AreaGameOver" type="Area2D" parent="."]
+script = ExtResource("6_evi0p")
+next_scene_path = "res://Scenes/GameOver.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaGameOver"]
+position = Vector2(231, 257)
+shape = SubResource("RectangleShape2D_lsmp6")
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="AreaGameOver" to="AreaGameOver" method="_on_body_entered"]
