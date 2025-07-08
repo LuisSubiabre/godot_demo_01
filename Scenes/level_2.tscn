@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=4 uid="uid://c6sw0x5bxydph"]
+[gd_scene load_steps=16 format=4 uid="uid://c6sw0x5bxydph"]
 
 [ext_resource type="Texture2D" uid="uid://rcxr50mhe722" path="res://Assets/Background/Blue.png" id="1_1q6tm"]
 [ext_resource type="PackedScene" uid="uid://doc7v7s7ra538" path="res://Scenes/player.tscn" id="2_v36qu"]
 [ext_resource type="Texture2D" uid="uid://b8i85mrnm3q5f" path="res://Assets/Terrain (16x16).png" id="3_cggpd"]
 [ext_resource type="Texture2D" uid="uid://cd76kofl7v1fb" path="res://Assets/Items/Checkpoints/End/End (Idle).png" id="4_055b2"]
 [ext_resource type="Script" uid="uid://bd7qpn4aedjmq" path="res://Scenes/area_game_over.gd" id="5_v36qu"]
+[ext_resource type="AudioStream" uid="uid://dunpc3vwr7mpt" path="res://Assets/loop2.mp3" id="6_cggpd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2mgoq"]
 texture = ExtResource("1_1q6tm")
@@ -240,5 +241,9 @@ next_scene_path = "res://Scenes/GameOver.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaGameOver"]
 position = Vector2(231, 257)
 shape = SubResource("RectangleShape2D_cggpd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_cggpd")
+autoplay = true
 
 [connection signal="body_entered" from="AreaGameOver" to="AreaGameOver" method="_on_body_entered"]
